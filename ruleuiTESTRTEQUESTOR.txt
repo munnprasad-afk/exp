@@ -1,0 +1,195 @@
+
+<body>
+    
+    <table class="base-table" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="center" style="padding:20px 0">
+                
+                
+                <table class="content-table" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="info-container">
+                            <div class="logo">
+                                <img src="{{logo}}" alt="ORACLE" width="120" style="display:block;border:0" />
+                            </div>
+                            <div class="hello-title">Hello,</div>
+                            <div class="hello-text">The below Rule has been Processed by Approver.</div>
+                                     <div class="hello-text">COMMENT:</div>  
+                          {{approverComment}}
+                            
+                            <div class="section-title">Rule Details</div>
+                            
+                            <table class="Adjustment-Details-Table">
+                                <tbody>
+                                    {{#payload}}{{#addRules}}{{#addRule}}
+                                    <tr>
+                                        <th>Awaiting Rule ID</th>
+                                        <td>{{awaitingRuleID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Original Rule ID</th>
+                                        <td>{{originalRuleID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rule Name</th>
+                                        <td>{{ruleName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rule Desc</th>
+                                        <td>{{ruleDesc}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Repository ID</th>
+                                        <td>{{repositoryID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Repository Name</th>
+                                        <td>{{repositoryName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Requester User Name</th>
+                                        <td>{{requesterUserName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Request Date</th>
+                                        <td>{{requestDate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Orig System Name</th>
+                                        <td>{{origSystemName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Client Name</th>
+                                        <td>{{clientName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Source Name</th>
+                                        <td>{{sourceName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Transaction Type</th>
+                                        <td>{{transactionType}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cancel</th>
+                                        <td>{{cancel}}</td>
+                                    </tr>
+                                    {{/addRule}}{{/addRules}}{{/payload}}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rectangle"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="footnote">
+                            <div class="footnote1">Warning: Do not forward this email</div>
+                            <div class="signature">
+                                Regards,<br />
+                                <strong>Rule UI Approvals Team</strong>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #E2E5E8;
+            font-family: 'Oracle Sans', Arial, Helvetica, sans-serif;
+        }
+        .base-table {
+            background-color: #E2E5E8;
+            width: 100%;
+        }
+        .content-table {
+            width: 640px;
+            max-width: 640px;
+            background-color: #ffffff;
+            margin: 0 auto;
+        }
+        .info-container {
+            padding: 25px 40px;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .hello-title {
+            color: #161513;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .hello-text {
+            color: #161513;
+            font-size: 16px;
+            line-height: 20px;
+            display: block;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            color: #161513;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 24px;
+            margin: 16px 0 12px;
+            text-decoration: underline;
+        }
+        .Adjustment-Details-Table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+            table-layout: fixed;
+        }
+        .Adjustment-Details-Table th {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            background: #f6f6f6;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            color: #161513;
+            width: 35%; /* Fixed width for alignment */
+        }
+        .Adjustment-Details-Table td {
+            font-size: 16px;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            color: #161513;
+            width: 65%;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+        }
+        .rectangle {
+            height: 1px;
+            background-color: #161513;
+            opacity: 0.1;
+            margin: 20px 40px;
+        }
+        .footnote {
+            padding: 0 40px 40px 40px;
+            color: #161513;
+            font-size: 13.75px;
+            line-height: 20px;
+        }
+        .footnote1 {
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+        .signature {
+            line-height: 20px;
+        }
+    </style>
