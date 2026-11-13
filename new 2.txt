@@ -1,0 +1,109 @@
+define([
+  'vb/action/actionChain',
+  'vb/action/actions',
+  'vb/action/actionUtils'
+], (
+  ActionChain,
+  Actions,
+  ActionUtils
+) => {
+  'use strict';
+
+  class PageVbEnterChain extends ActionChain {
+
+    async run(context, { event }) {
+      const { $page, $flow, $application, $constants, $variables } = context;
+
+      const results = await Promise.all([
+        async () => {
+
+          const response = await Actions.callRest(context, {
+            endpoint: 'classification/get',
+            uriParams: {
+              limit: 10000,
+              offset: 0,
+            },
+          });
+
+          $variables.classificationADP.data = response.body.items;
+        },
+        async () => {
+
+          const response2 = await Actions.callRest(context, {
+            endpoint: 'jeGrouping/get',
+            uriParams: {
+              limit: 10000,
+              offset: 0,
+            },
+          });
+
+          $variables.jeGroupingADP.data = response2.body.items;
+        },
+        async () => {
+          const response3 = await Actions.callRest(context, {
+            endpoint: 'GljeOutputString/get',
+            uriParams: {
+              limit: 10000,
+              offset: 0,
+            },
+          });
+
+          $variables.getgljeoutputstringADP.data = response3.body.items;
+        },
+      ].map(sequence => sequence()));
+
+
+$variables.advancedSearchVar.amountVar = false;                           
+$variables.advancedSearchVar.amountcurrencyVar = false;                  
+$variables.advancedSearchVar.baicodeVar = false;                         
+$variables.advancedSearchVar.cashglaccountVar = false;                  
+$variables.advancedSearchVar.classificationVar = false;                   
+$variables.advancedSearchVar.classificationruleidVar = false;           
+$variables.advancedSearchVar.classificationrulenameVar = false;         
+$variables.advancedSearchVar.classificationruleversionVar = false;      
+$variables.advancedSearchVar.closingbalanceVar = false;                  
+$variables.advancedSearchVar.companycodeVar = false;                     
+$variables.advancedSearchVar.customerreferenceVar = false;               
+$variables.advancedSearchVar.descriptionVar = false;                      
+$variables.advancedSearchVar.domaincodeVar = false;                      
+$variables.advancedSearchVar.exchangeamountVar = false;                  
+$variables.advancedSearchVar.exchangecurrencyVar = false;                
+$variables.advancedSearchVar.exchangerateVar = false;                    
+$variables.advancedSearchVar.exchangeratedateVar = false;               
+$variables.advancedSearchVar.familycodeVar = false;                      
+$variables.advancedSearchVar.filenameVar = false;                        
+$variables.advancedSearchVar.glaccountVar = false;                       
+$variables.advancedSearchVar.glflagVar = false;                          
+$variables.advancedSearchVar.headermessageVar = false;                   
+$variables.advancedSearchVar.headeridVar = false;                        
+$variables.advancedSearchVar.jegroupVar = false;                         
+$variables.advancedSearchVar.jereversalreasonVar = false;               
+$variables.advancedSearchVar.jereversalstatusVar = false;               
+$variables.advancedSearchVar.journalizationruleidVar = false;           
+$variables.advancedSearchVar.journalizationrulenameVar = false;         
+$variables.advancedSearchVar.journalizationruleversionVar = false;      
+$variables.advancedSearchVar.lastupdatedateVar = false;                 
+$variables.advancedSearchVar.lastupdatedbyVar = false;                  
+$variables.advancedSearchVar.ledgernameVar = false;                      
+$variables.advancedSearchVar.linemessageVar = false;                     
+$variables.advancedSearchVar.linenumberVar = false;                      
+$variables.advancedSearchVar.lineidVar = false;                          
+$variables.advancedSearchVar.manualoverrideVar = false;                  
+$variables.advancedSearchVar.numberofcreditentriesVar = false;         
+$variables.advancedSearchVar.numberofdebitentriesVar = false;          
+$variables.advancedSearchVar.offseticcreditVar = false;                 
+$variables.advancedSearchVar.offseticdebitVar = false;                  
+$variables.advancedSearchVar.offsetledgerVar = false;                    
+$variables.advancedSearchVar.openingbalanceVar = false;                  
+$variables.advancedSearchVar.oraclecetransferVar = false;               
+$variables.advancedSearchVar.reconciledamountVar = false;                
+$variables.advancedSearchVar.reconciliationstatusVar = false;            
+$variables.advancedSearchVar.statementnumberVar = false;                 
+$variables.advancedSearchVar.subfamilycodeVar = false;                  
+$variables.advancedSearchVar.transactiontypeVar = false;                 
+$variables.advancedSearchVar.trxentrynoVar = false;                     
+    }
+  }
+
+  return PageVbEnterChain;
+});
